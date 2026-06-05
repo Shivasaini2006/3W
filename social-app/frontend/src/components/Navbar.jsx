@@ -3,10 +3,11 @@ import { AppBar, Toolbar, Typography, Box, Avatar, Badge, Chip, IconButton } fro
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import SearchIcon from '@mui/icons-material/Search';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { AuthContext } from '../App';
 
 export default function Navbar() {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <AppBar position="sticky" sx={{ bgcolor: 'white', color: 'black', boxShadow: 'none', borderBottom: '1px solid #f0f0f0' }}>
@@ -31,12 +32,15 @@ export default function Navbar() {
               <NotificationsNoneIcon sx={{ color: '#666' }} />
             </Badge>
           </IconButton>
-          <Box sx={{ position: 'relative' }}>
+          <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 1 }}>
             <Avatar 
               sx={{ width: 35, height: 35, bgcolor: '#0052cc', border: '2px solid #38a169', p: 0.5 }}
             >
               {user?.username?.[0]?.toUpperCase() || 'U'}
             </Avatar>
+            <IconButton size="small" onClick={logout} title="Logout">
+              <LogoutIcon sx={{ color: '#d32f2f' }} />
+            </IconButton>
           </Box>
         </Box>
       </Toolbar>
