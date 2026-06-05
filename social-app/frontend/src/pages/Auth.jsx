@@ -33,9 +33,9 @@ export default function Auth() {
               <TextField fullWidth label="Username" margin="normal"
                 onChange={e => setFormData({ ...formData, username: e.target.value })} required />
             )}
-            <TextField fullWidth label="Email" type="email" margin="normal"
+            <TextField fullWidth label="Email" type="email" margin="normal" autoComplete="email"
               onChange={e => setFormData({ ...formData, email: e.target.value })} required />
-            <TextField fullWidth label="Password" type="password" margin="normal"
+            <TextField fullWidth label="Password" type="password" margin="normal" autoComplete={isLogin ? "current-password" : "new-password"}
               onChange={e => setFormData({ ...formData, password: e.target.value })} required />
             <Button fullWidth type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
               {isLogin ? 'Login' : 'Sign Up'}
